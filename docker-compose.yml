@@ -1,0 +1,8 @@
+services:
+  oi-monitor:
+    build: .
+    image: oi-monitor:latest
+    container_name: oi-monitor
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
