@@ -1,8 +1,13 @@
 services:
   oi-monitor:
-    build: .
-    image: oi-monitor:latest
+    image: ghcr.io/6kmfi6hp/oi:main
     container_name: oi-monitor
     ports:
       - "8000:8000"
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      start_period: 10s
+      retries: 3
