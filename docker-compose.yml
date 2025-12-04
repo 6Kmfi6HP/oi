@@ -1,6 +1,9 @@
 services:
   oi-monitor:
     image: ghcr.io/6kmfi6hp/oi:main
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: oi-monitor
     ports:
       - "8000:8000"
